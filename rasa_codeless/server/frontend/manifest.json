@@ -1,9 +1,9 @@
 {
-  "short_name": "kolloqe",
-  "name": "kolloqe",
+  "short_name": "rasac",
+  "name": "rasac",
   "icons": [
     {
-      "src": "res/images/kolloqe-favicon.png",
+      "src": "res/images/favicon.ico",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/png"
     },

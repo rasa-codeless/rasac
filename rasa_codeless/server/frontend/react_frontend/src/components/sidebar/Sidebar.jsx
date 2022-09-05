@@ -1,8 +1,8 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import kolloqe from './kolloqe_steel.png';
-import VersionModal from '../modal/VersionModal';
-import { configs } from '../../configs';
+import React from "react";
+import { Link } from "react-router-dom";
+import rasac from "./rasac.png";
+import VersionModal from "../modal/VersionModal";
+import { configs } from "../../configs";
 
 class Sidebar extends React.Component {
   constructor(props) {
@@ -24,51 +24,64 @@ class Sidebar extends React.Component {
               <div className="span4 text-center">
                 <img
                   className="center-block sidebar-logo"
-                  src={kolloqe}
+                  src={rasac}
                   alt=""
                   role={"button"}
                   data-bs-toggle="modal"
-                  data-bs-target={`#kolloqe-version-modal`}
+                  data-bs-target={`#rasac-version-modal`}
                 />
               </div>
               <div className="span4"></div>
             </div>
           </div>
-          <br />
-          <div className={`app-sidebar-link ${this.props.activeLink === "configs" && "app-sidebar-link-active"}`}
-          // onClick={(e) => { this.props.setActiveLink(e, "models") }}
+          <div
+            className={`app-sidebar-link ${
+              this.props.activeLink === "configs" && "app-sidebar-link-active"
+            }`}
+            // onClick={(e) => { this.props.setActiveLink(e, "models") }}
           >
-            <Link to="/" className="sidebar-link ripple-button" id="sidebar-configs">
-              <span className="material-icons material-sidebar-icon">
-                tune
-              </span>
-              <span className="icon-text">
-                Configurations
-              </span>
+            <Link
+              to="/"
+              className="sidebar-link ripple-button"
+              id="sidebar-configs"
+            >
+              <span className="material-icons material-sidebar-icon">tune</span>
+              <span className="icon-text">Configurations</span>
             </Link>
           </div>
           <br />
-          <div className={`app-sidebar-link ${this.props.activeLink === "models" && "app-sidebar-link-active"}`}
-          // onClick={(e) => { this.props.setActiveLink(e, "models") }}
+          <div
+            className={`app-sidebar-link ${
+              this.props.activeLink === "models" && "app-sidebar-link-active"
+            }`}
+            // onClick={(e) => { this.props.setActiveLink(e, "models") }}
           >
-            <Link to="/models" className="sidebar-link ripple-button" id="sidebar-models">
+            <Link
+              to="/models"
+              className="sidebar-link ripple-button"
+              id="sidebar-models"
+            >
               <span className="material-icons material-sidebar-icon">
                 view_in_ar
               </span>
-              <span className="icon-text">
-                Models
-              </span>
+              <span className="icon-text">Models</span>
             </Link>
           </div>
           <br />
           <div className="app-sidebar-link">
-            <label htmlFor="dark-mode-switch" className="sidebar-link ripple-button" id="sidebar-dark-mode" onClick={this.handleTheme}>
-              <span className="material-icons material-sidebar-icon" id="sidebar-dark-mode-icon">
+            <label
+              htmlFor="dark-mode-switch"
+              className="sidebar-link ripple-button"
+              id="sidebar-dark-mode"
+              onClick={this.handleTheme}
+            >
+              <span
+                className="material-icons material-sidebar-icon"
+                id="sidebar-dark-mode-icon"
+              >
                 dark_mode
               </span>
-              <span className="icon-text">
-                Dark Mode
-              </span>
+              <span className="icon-text">Dark Mode</span>
             </label>
           </div>
         </div>
@@ -81,4 +94,4 @@ class Sidebar extends React.Component {
   }
 }
 
-export default Sidebar
+export default Sidebar;

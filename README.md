@@ -1,4 +1,4 @@
-# RASA Codeless 0.0.1a1 Release
+# RASA Codeless 0.0.1a2 Release
 
 ### RASA Codeless provides a GUI for NLU pipeline configurations and model training and evaluation for Rasa Conversational AIs.
 
@@ -20,6 +20,6 @@
 - Evaluations are limited to DIET Classifier
 
 📒 Docs: https://rasa-codeless.github.io 
-📦 PyPi: https://pypi.org/project/rasac/0.0.1a1/ 
-🪵 Full Changelog: Refer the relevant GitHub branch (v0.0.1a1)
+📦 PyPi: https://pypi.org/project/rasac/0.0.1a2/ 
+🪵 Full Changelog: Refer the relevant GitHub branch (v0.0.1a2)
 

@@ -9,12 +9,14 @@ from dotenv import load_dotenv
 from rasa_codeless.server.rasac_server import RASACServer
 from rasa_codeless.shared.constants import (
     PACKAGE_VERSION,
-    DEFAULT_PORT, LoggingLevel, DEFAULT_RASA_CONFIG_PATH, InterfaceType, TermColor
+    LoggingLevel,
+    DEFAULT_RASA_CONFIG_PATH,
+    InterfaceType,
+    TermColor
 )
 from rasa_codeless.shared.exceptions.server import RASACQueueException
 from rasa_codeless.utils.config import get_init_configs
 from rasa_codeless.utils.io import set_cli_color, dir_exists
-
 from rasa_codeless.utils.rasac_logging_formatter import (
     RASACLoggingFormatter,
     MaxLevelFilter
@@ -41,15 +43,12 @@ logger.setLevel(level=logging.INFO)
 # for conda environments, manually set env var
 # conda env config vars set TF_CPP_MIN_LOG_LEVEL=2
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
-
-
 def create_argument_parser():
     """
     Parses the arguments passed to rasa_codeless through RASAC CLI tool.
     Returns:
         argparse.ArgumentParser()
     """
-
     parser = argparse.ArgumentParser(prog="rasac", description="starts RASAC CLI")
     subparsers = parser.add_subparsers(help='desired RASAC interface to run [cli/server]', dest="subparser_name")
 
@@ -101,24 +100,22 @@ def create_argument_parser():
 
 
 def _set_logging_level(level: Text = LoggingLevel.INFO) -> NoReturn:
-   if level == LoggingLevel.NOTSET:
-       logger.setLevel(level=logging.NOTSET)
-   elif level == LoggingLevel.DEBUG:
-       logger.setLevel(level=logging.DEBUG)
-   elif level == LoggingLevel.INFO:
-       logger.setLevel(level=logging.INFO)
-   elif level == LoggingLevel.WARNING:
-       logger.setLevel(level=logging.WARNING)
-   elif level == LoggingLevel.ERROR:
-       logger.setLevel(level=logging.ERROR)
-   elif level == LoggingLevel.CRITICAL:
-       logger.setLevel(level=logging.CRITICAL)
-   elif level == LoggingLevel.QUIET:
-       logging.disable(level=logging.CRITICAL)
-   else:
-       logger.setLevel(level=logging.INFO)
-
-
+    if level == LoggingLevel.NOTSET:
+        logger.setLevel(level=logging.NOTSET)
+    elif level == LoggingLevel.DEBUG:
+        logger.setLevel(level=logging.DEBUG)
+    elif level == LoggingLevel.INFO:
+        logger.setLevel(level=logging.INFO)
+    elif level == LoggingLevel.WARNING:
+        logger.setLevel(level=logging.WARNING)
+    elif level == LoggingLevel.ERROR:
+        logger.setLevel(level=logging.ERROR)
+    elif level == LoggingLevel.CRITICAL:
+        logger.setLevel(level=logging.CRITICAL)
+    elif level == LoggingLevel.QUIET:
+        logging.disable(level=logging.CRITICAL)
+    else:
+        logger.setLevel(level=logging.INFO)
 
 
 def run_rasac() -> NoReturn:
@@ -139,7 +136,6 @@ def run_rasac() -> NoReturn:
             logger.error("Please specify a valid positional arg out of \'init\' and \'server\', "
                          "to use RASAC CLI.")
             return
-
         if str.lower(interface) == InterfaceType.INIT:
             quiet = cmdline_args.quiet
             debug_mode = cmdline_args.debug
@@ -163,12 +159,10 @@ def run_rasac() -> NoReturn:
                     ))
                 else:
                     dest_dir = "."
-
                 if dest_dir and not dir_exists(dir_path=dest_dir):
                     logger.error("Directory name or path should be a "
                                  "valid existing directory")
                     return
-
                 rasac_init = RASACInit()
                 rasac_init.build_scaffold(dest_path=dest_dir)
             except KeyboardInterrupt:
@@ -199,7 +193,7 @@ def run_rasac() -> NoReturn:
             rasac_server.run()
 
     except RASACQueueException as e:
-        logger.error("failed to initialize queues")
+        logger.error(f"Failed to Initialize the Training Queue. {e}")
         exit(1)
     except KeyboardInterrupt:
         logger.info(f"Gracefully terminating RASAC CLI...")

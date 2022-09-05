@@ -2,8 +2,16 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](https://semver.org/) starting with version 0.0.1a1
 
-## [0.0.1a1] - 2022-09-03
+## [0.0.1a2] - 2022-09-05
+### Improvements
+- changed RASAC logos and favicons
 
+### Bugfixes
+- removed custom Rasa components
+- updated `rasa init` dir structure to include `tensorboard` results
+- updated init dir instructions and readmes
+
+## [0.0.1a1] - 2022-09-03
 ### Features
 - added the main `CLI`
 - added the `RASAC server GUI`

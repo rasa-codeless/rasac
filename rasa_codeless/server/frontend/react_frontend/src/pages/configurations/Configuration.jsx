@@ -2169,7 +2169,7 @@ export default function Configurations({
           : null,
         classifierValues.dietC === true
           ? {
-              name: "custom.classifiers.custom_diet_classifier.DIETClassifier",
+              name: "DIETClassifier",
               epochs: DIETClassifierEpochs,
               entity_recognition: DIETClassifierEntityRecognition,
               intent_classification: DIETClassifierIntentClassification,

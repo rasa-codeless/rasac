@@ -23,7 +23,7 @@ class TensorBoardResults:
 
     @staticmethod
     def generate_epoch_list(total_epochs: int):
-        return list(range(1, total_epochs))
+        return list(range(1, total_epochs+1))
 
     def _iterate_through_results(self, results_dir: Text) -> Tuple[List, int]:
         accuracy = list()
