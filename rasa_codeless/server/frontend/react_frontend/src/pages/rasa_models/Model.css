@@ -1,0 +1,23 @@
+.BodyWindowTopRight {
+    margin-top: 2.5vh;
+    margin-right: 1vw;
+    display: flex;
+    align-items: center;
+    background-color: #eceef0;
+    padding: 10px;
+    margin-left: 10px;
+    border-radius: 999px;
+    float: right;
+  }
+
+  .BodyWindowTopRight > input
+{
+  border: none;
+  background-color: transparent;
+  outline-width: 0;
+}
+
+/* .BodyWindowTopRight > .MuiSvgIcon-root
+{
+  color: rgb(12, 12, 12);
+} */
