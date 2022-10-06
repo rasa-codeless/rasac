@@ -5,8 +5,7 @@ import {
   Route
 } from 'react-router-dom';
 import './App.css';
-import { configs, rasac_ascii } from './configs';
-import axios from 'axios';
+import { rasac_ascii } from './configs';
 import NotificationPanel from './components/notificationPanel/NotificationPanel';
 import Sidebar from './components/sidebar/Sidebar';
 import { GlobalDebug } from './configs';
@@ -87,6 +86,7 @@ export default class App extends React.Component {
               handleAppTheme={this.handleAppTheme}
               currentTheme={this.state.appTheme}
               activeLink={this.state.sidebarActiveLink}
+              appVersion={this.props?.appVersion}
               setActiveLink={this.setActiveLink} />
             <input
               style={{ marginLeft: "350px", backgroundColor: "#3dd5f3" }}

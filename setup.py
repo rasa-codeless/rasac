@@ -6,7 +6,11 @@ from setuptools import (
 )
 from rasa_codeless.shared.constants import (
     PACKAGE_NAME,
-    PACKAGE_VERSION
+    PACKAGE_VERSION,
+    PACKAGE_README_PYPI,
+    PACKAGE_REQUIREMENTS,
+    FilePermission,
+    Encoding
 )
 
 logger = logging.getLogger(__name__)
@@ -19,17 +23,18 @@ requirements = None
 long_description = None
 
 try:
-    with open("README.md", mode="r", encoding="utf8") as readme_file:
+    with open(PACKAGE_README_PYPI, mode=FilePermission.READ, encoding=Encoding.UTF8) as readme_file:
         long_description = readme_file.read()
 
-    with open("requirements.txt", mode="r", encoding="utf8") as requirements_file:
+    with open(PACKAGE_REQUIREMENTS, mode=FilePermission.READ, encoding=Encoding.UTF8) as requirements_file:
         requirements = requirements_file.readlines()
     requirements = [str.strip(req) for req in requirements]
 
 except Exception as e:
-    long_description = "not provided"
-    logger.error(f"couldn't retrieve the long "
-                 f"package description. {e}")
+    long_description = f"RASA Codeless provides a GUI for NLU pipeline configurations " \
+                       f"and model training and evaluation for Rasa Conversational AIs."
+    logger.warning(f"couldn't retrieve the long package description. Default Description "
+                   f"is used.{e}")
 
 setup(
     name=PACKAGE_NAME,
@@ -49,8 +54,14 @@ setup(
             "frontend/static/css/*",
             "frontend/static/js/*",
             "frontend/static/media/*",
+            "frontend/*.json",
+            "frontend/*.html",
+            "frontend/*.txt",
             "static/*",
             "templates/*",
+            "bot_store/*",
+            "rasac_cache/*",
+            "tensorboard/*",
             "*.env",
             "*.md",
             "*.js",
@@ -69,7 +80,7 @@ setup(
     author_email="shamikhhameed@gmail.com",
     license='Apache License 2.0',
     classifiers=[
-        "Development Status :: 3 - Alpha",
+        "Development Status :: 5 - Production/Stable",
         "Environment :: Console",
         "Environment :: GPU",
         "Framework :: Flask",
@@ -92,4 +103,3 @@ setup(
     ],
     entry_points={'console_scripts': ['rasac = rasa_codeless.rasa_codeless:run_rasac']}
 )
-

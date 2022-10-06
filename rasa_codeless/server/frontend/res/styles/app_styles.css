@@ -10,6 +10,20 @@ body, button {
     "Droid Sans", "Helvetica Neue", sans-serif !important;
 }
 
+/* scrollbar */
+/* Hide scrollbar for Chrome, Safari and Opera */
+.suggestions::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.suggestions {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  overflow-y: auto;
+}
+/* scrollbar ends */ 
+
 .dime-page-title {
     color: white;
     transition: all 2s ease;
@@ -110,13 +124,52 @@ body #main {
     transition: background-color .3s ease;
 }
 
+.container-bg-platinum-onyx {
+  background-color: #353935 !important;
+  color: #f1f1f1 !important;
+  border-radius: 10px !important;
+  border: 2px solid #485248 !important;
+  margin: 10px;
+  transition: background-color 0.3s ease;
+  transition: border-color 0.3s ease;
+}
+
 .rubik {
     font-family: 'Rubik', 'Lato', sans-serif !important;
 }
 
-/*.container-border {*/
-/*    border: 2px solid #424242 !important;*/
-/*}*/
+
+.app-text-icon {
+    color: #f1f1f1 !important;
+    background-color: #536445 !important;
+    padding: 5px !important;
+    font-size: 1.8rem !important;
+    border-radius: 50% !important;
+  }
+  
+  .app-text-tag-close {
+    transition: color 0.3s ease;
+  }
+  
+  .app-text-tag-close:hover {
+    color: #eceff1 !important;
+  }
+  
+  .app-input-map input {
+    color: white !important;
+  }
+  
+  .app-input-map-disabled {
+    background-color: #323632 !important;
+  }
+  
+  .no-shadow {
+      box-shadow: none !important;
+  }
+  
+  /*.container-border {*/
+  /*    border: 2px solid #424242 !important;*/
+  /*}*/
 
 .sidebar-logo-container {
     margin: 15px 0 30px 0;
@@ -306,6 +359,45 @@ span.ripple {
 .app-button:hover {
     color: #f1f1f1;
     background-color: #525252 !important;
+}
+
+.app-button-map {
+  min-width: fit-content;
+  color: white !important;
+  background-color: #546e7a !important;
+  text-decoration: none !important;
+  box-shadow: none !important;
+}
+
+.app-button-map:hover {
+  color: #f1f1f1;
+  background-color: #607d8b !important;
+}
+
+.app-button-map-edit {
+  min-width: fit-content;
+  color: white !important;
+  background-color: #ff9800 !important;
+  text-decoration: none !important;
+  box-shadow: none !important;
+}
+
+.app-button-map-edit:hover {
+  color: #f1f1f1;
+  background-color: #ffac30 !important;
+}
+
+.app-button-map-deete {
+  min-width: fit-content;
+  color: white !important;
+  background-color: #f44336 !important;
+  text-decoration: none !important;
+  box-shadow: none !important;
+}
+
+.app-button-map-delete:hover {
+  color: #f1f1f1;
+  background-color: #ef5350 !important;
 }
 
 .app-button-red {
@@ -549,7 +641,8 @@ span.ripple {
     background-color: #212121;
 }
 
-.app-model-list-item .MuiListItemIcon-root, .app-model-list-item .MuiListItemText-secondary {
+.app-model-list-item .MuiListItemIcon-root, 
+.app-model-list-item .MuiListItemText-secondary {
     color: #a5a5a5;
 }
 
@@ -722,6 +815,32 @@ input[type=checkbox] {
     color: #353535 !important;
 }
 
+#dark-mode-switch-main:checked + #main .container-bg-platinum-onyx {
+  background-color: #e5e4e2 !important;
+  color: #000000 !important;
+  border-radius: 10px !important;
+  border: 2px solid #bcbcbc !important;
+  margin: 10px;
+  transition: background-color 0.3s ease;
+  transition: border-color 0.3s ease;
+}
+
+#dark-mode-switch-main:checked + #main .app-text-icon {
+  color: #455a64 !important;
+  background-color: #b0bec5 !important;
+  padding: 5px !important;
+  font-size: 1.8rem !important;
+  border-radius: 50% !important;
+}
+
+#dark-mode-switch-main:checked + #main .app-input-map input {
+  color: black !important;
+}
+
+#dark-mode-switch-main:checked + #main .app-input-map-disabled {
+    background-color: #d8d7d5 !important;
+}
+
 #dark-mode-switch-main:checked + #main .dime-page-title {
     color: #040404;
 }
@@ -759,6 +878,14 @@ input[type=checkbox] {
 #dark-mode-switch-main:checked + .app-button{
     color: #f1f1f1;
     background-color: #424242 !important;
+}
+
+#dark-mode-switch-main:checked + #main .app-button-map {
+  min-width: fit-content;
+  color: white !important;
+  background-color: #546e7a !important;
+  text-decoration: none !important;
+  box-shadow: none !important;
 }
 
 #dark-mode-switch-main:checked + #main .app-tab {
@@ -900,6 +1027,10 @@ input[type=checkbox] {
 #dark-mode-switch-main:checked + #main .app-main-configs .MuiCheckbox-root svg {
     color: #1976d2;
     /* 388e3c */
+}
+
+#dark-mode-switch-main:checked + #main .material-grey-dynamic-f {
+    color: #4b4b4b !important;
 }
 
 /*LIGHT MODE ENDS*/
@@ -1122,12 +1253,24 @@ input[type=checkbox] {
     color: #607D8B !important;
 }
 
+.material-off-steel {
+  background-color: #cfd8dc !important;
+}
+
+.material-off-steel-f {
+  color: #cfd8dc !important;
+}
+
 .material-licorice {
     background-color: #1B1212 !important;
 }
 
 .material-licorice-f {
     color: #1B1212 !important;
+}
+
+.material-grey-dynamic-f {
+    color: #b9b9b9 !important;
 }
 
 .material-alert {
