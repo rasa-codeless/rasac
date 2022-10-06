@@ -1,26 +1,24 @@
-let api = ""; //"http://localhost:6069";
+let api = "http://localhost:6069"; //"http://localhost:6069";
 
 let rasacDocsHost = "https://rasa-codeless.github.io";
 
 export const configs = {
   api: api,  
+
   rasacDocsHost: `${rasacDocsHost}/`,
-  rasacVersion: `1.0.0`,
   rasacGitHub: `https://www.github.com/rasa-codeless/rasac`,
 
+  trainModelEndpoint: `${api}/api/rasac/bot/train`,
+  abortTrainEndpoint: `${api}/api/rasac/bot/abort`,
+  getModelListEnpoint: `${api}/api/rasac/botstore/models`,
+  getModelCurveDatapointsEndpoint: `${api}/api/rasac/botstore/curve/`,
+  getModelConfigEndpoint: `${api}/api/rasac/botstore/config/`,
+  downloadModelEndpoint: `${api}/api/rasac/botstore/models/`,
+  deleteModelEndpoint: `${api}/api/rasac/botstore/models/`,
+  nluDataEndpoint: `${api}/api/rasac/botstore/nlu/`,
+  
   snackbarVerticalPosition: "bottom",
   snackbarHorizontalPostion: "left",
-  getModelListEnpoint: `${api}/api/rasac/config/update`,
-  getLatestModelEndpoint: `${api}/api/rasac/model/latest`,
-  getModelCurveDatapointsEndpoint: `${api}/api/rasac/model/curve/`,
-  getIntentsEndpoint: `${api}/api/rasac/intent`,
-  deleteModelEndpoint: `${api}/api/rasac/model/`,
-  downloadModelEndpoint: `${api}/api/rasac/download/`,
-  trainModelEndpoint: `${api}/api/rasac/config/update`,
-  getModelConfigEndpoint: `${api}/api/rasac/model/config/`,
-  abortTrainEndpoint: `${api}/api/rasac/config/abort`,
-  getModelNamesEndpoint: `${api}/api/rasac/model/all`,
-  getIntentStats: `${api}/api/rasac/intent/stats`,
 };
 
 export const docLinks = {

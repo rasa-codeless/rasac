@@ -86,7 +86,7 @@ class Sidebar extends React.Component {
           </div>
         </div>
         <VersionModal
-          version={`${configs.rasacVersion}`}
+          version={this.props?.appVersion}
           docs={`${configs.rasacDocsHost}`}
         />
       </>

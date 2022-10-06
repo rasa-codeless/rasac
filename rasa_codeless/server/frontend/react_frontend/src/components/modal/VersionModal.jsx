@@ -13,8 +13,7 @@ export default class VersionModal extends Component {
         className="modal fade"
         id="rasac-version-modal"
         tabIndex="-1"
-        aria-hidden="true"
-      >
+        aria-hidden="true">
         <div className="modal-dialog modal-dialog-centered overflow-hidden">
           <div className="modal-content app-modal app-modal-version">
             <div className="modal-body" style={{ border: "none" }}>
@@ -62,7 +61,7 @@ export default class VersionModal extends Component {
                                 className={""}
                               >{`version ${this.props.version}`}</Typography>
                             }
-                            className="material-green material-white-f"
+                            className="material-blue material-white-f"
                           />
                         </Stack>
                       </Box>
@@ -81,7 +80,7 @@ export default class VersionModal extends Component {
                               href={configs.rasacDocsHost}
                               target="_blank"
                               rel="noreferrer"
-                              className={"material-green-f"}
+                              className={"material-blue-f"}
                               role={"button"}
                               style={{ textDecoration: "none" }}
                             >
@@ -91,7 +90,7 @@ export default class VersionModal extends Component {
                               href={configs.rasacGitHub}
                               target="_blank"
                               rel="noreferrer"
-                              className={"material-green-f"}
+                              className={"material-blue-f"}
                               role={"button"}
                               style={{ textDecoration: "none" }}
                             >

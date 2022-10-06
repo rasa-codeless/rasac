@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Error.css';
-import kolloqe_steel from './kolloqe_steel.png';
+import rasac from "./rasac.png";
 import { motion } from "framer-motion";
 import { Container, LinearProgress, Stack } from '@mui/material';
 import { Link } from 'react-router-dom';
@@ -22,7 +22,7 @@ export default class Error extends Component {
                 animate={{ scale: 1 }}
                 transition={{ duration: 0.6, ease: 'backInOut' }}
               >
-                <img src={kolloqe_steel} className="app-error-page-logo" alt="logo" />
+                <img src={rasac} className="app-error-page-logo" alt="logo" />
               </motion.div>
               {this.props.status ?
                 <Container>
@@ -33,14 +33,14 @@ export default class Error extends Component {
                   <motion.h6
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    transition={{ delay: 0.6 }}>
+                    transition={{ delay: 0.6 }}
+                    className={`material-grey-dynamic-f`}>
                     {`Page Not found. Go Back to the `}
                     <Link
                       to="/"
                       className={'material-red-f'} 
                       style={{ textDecoration: "none" }}
-                      role={'button'}
-                    >
+                      role={'button'}>
                       Dashboard
                     </Link>
                   </motion.h6>

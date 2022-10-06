@@ -7,7 +7,6 @@
     content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="theme-color" content="#000000" />
-  <meta name="kolloqe" content="Code-less Explainable Conversational AI Platform" />
   <link rel="stylesheet" href="%PUBLIC_URL%\res\styles\app_styles.css">
   <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -20,7 +19,7 @@
   <link rel="apple-touch-icon" href="%PUBLIC_URL%/res/images/logo192.png" />
   <link rel="apple-touch-icon" href="%PUBLIC_URL%\res\imagegs\rasac.png" />
   <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-  <title>Kolloqe</title>
+  <title>Rasa Codeless Dev Console</title>
 </head>
 
 <body class="user-select-none">
@@ -30,18 +29,7 @@
     window.appTheme = "{{ config['APP_THEME'] }}";
     window.appEnv = "{{ config['APP_ENV'] }}";
     window.appSinhala = "{{ config['SINHALA_ENABLED'] }}";
-    window.webchatInitPayload = "{{ config['WEBCHAT_INIT_PAYLOAD'] }}";
-    window.webchatURLEndpoint = "{{ config['WEBCHAT_SOCKET_URL'] }}";
-    window.webchatSocketPath = "{{ config['WEBCHAT_SOCKET_PATH'] }}";
-    window.webchatTitle = "{{ config['WEBCHAT_TITLE'] }}";
-    window.webchatSubtitle = "{{ config['WEBCHAT_SUBTITLE'] }}";
-    window.webchatDocViewer = "{{ config['WEBCHAT_DOCVIEWER'] }}";
-    window.webchatInputHint = "{{ config['WEBCHAT_INPUT_HINT'] }}";
-    window.webchatEmbedded = "{{ config['WEBCHAT_EMBEDDED'] }}";
-    window.webchatFullScreenButton = "{{ config['WEBCHAT_FULLSCREEN_BUTTON'] }}";
-    window.webchatUnreadCount = "{{ config['WEBCHAT_UNREAD_COUNT'] }}";
-    window.webchatMessageDate = "{{ config['WEBCHAT_MESSAGE_DATE'] }}";
-    window.webchatStorage = "{{ config['WEBCHAT_STORAGE'] }}";
+    window.appVersion = "{{ config['VERSION'] }}";
   </script>
   <script type="text/javascript" src="%PUBLIC_URL%\res\scripts\bootstrap.min.js"></script>
   <script type="text/javascript" src="%PUBLIC_URL%\res\scripts\jquery-3.6.0.min.js"></script>
