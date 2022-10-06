@@ -9,19 +9,18 @@ from flask import (
     render_template,
     send_from_directory,
     redirect,
-    url_for,
 )
 from flask_cors import (
     CORS,
     cross_origin,
 )
+from rasa_codeless.shared.constants import PACKAGE_VERSION
+from rasa_codeless.utils.io import dir_exists
+
 # from werkzeug.exceptions import (
 #     HTTPException,
 #     InternalServerError,
 # )
-
-from rasa_codeless.shared.constants import PACKAGE_VERSION
-from rasa_codeless.utils.io import dir_exists
 
 logger = logging.getLogger(__name__)
 

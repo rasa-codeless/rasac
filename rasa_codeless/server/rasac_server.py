@@ -11,6 +11,7 @@ from rasa_codeless.shared.constants import (
     RASAC_ASCII_LOGO,
     ServerEnv,
     Config,
+    PACKAGE_VERSION,
 )
 from rasa_codeless.shared.exceptions.base import (
     RASACException,
@@ -20,9 +21,10 @@ from rasa_codeless.shared.exceptions.core import (
 )
 from rasa_codeless.shared.exceptions.server import (
     RASACServerException,
-    ServerNotFoundException, RASACQueueException,
+    ServerNotFoundException,
+    RASACQueueException,
 )
-from rasa_codeless.utils.training_queue import create_in_memory_training_queue
+from rasa_codeless.core.training_queue import create_in_memory_training_queue
 
 logger = logging.getLogger(__name__)
 
@@ -46,13 +48,14 @@ class RASACServer:
             raise RASACQueueException(e)
 
     def run(self) -> None:
-        logger.info(f"Starting RASAC server at http://{self.host}:{self.port}/")
+        logger.info(f"Starting RASAC server at http://{self.host}:{self.port}")
         try:
             configs = self.configs
             app_config = {
                 "RASAC": configs,
                 "APP_THEME": os.environ.get("APP_THEME") or "dark",
                 "APP_ENV": os.environ.get("APP_ENV") or "prod",
+                "VERSION": PACKAGE_VERSION,
             }
 
             if self.debug_mode:

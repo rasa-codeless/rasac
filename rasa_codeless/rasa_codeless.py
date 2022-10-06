@@ -12,7 +12,10 @@ from rasa_codeless.shared.constants import (
     LoggingLevel,
     DEFAULT_RASA_CONFIG_PATH,
     InterfaceType,
-    TermColor
+    TermColor,
+    RASA_CODELESS_PROJECT_DIRS,
+    LOGGING_FORMAT_STR,
+    DOTENV_FILES
 )
 from rasa_codeless.shared.exceptions.server import RASACQueueException
 from rasa_codeless.utils.config import get_init_configs
@@ -25,9 +28,9 @@ from rasa_codeless.utils.scaffold import RASACInit
 
 logger = logging.getLogger()
 sys.path.insert(0, os.getcwd())
-load_dotenv(os.path.join(os.getcwd(), ".env"))
+load_dotenv(os.path.join(os.getcwd(), DOTENV_FILES[0]))
 
-formatter = RASACLoggingFormatter(format_str='%(asctime)s\t%(levelname)s\t%(name)s - %(message)s')
+formatter = RASACLoggingFormatter(format_str=LOGGING_FORMAT_STR)
 logging_out = logging.StreamHandler(sys.stdout)
 logging_err = logging.StreamHandler(sys.stderr)
 logging_out.setFormatter(formatter)
@@ -43,6 +46,8 @@ logger.setLevel(level=logging.INFO)
 # for conda environments, manually set env var
 # conda env config vars set TF_CPP_MIN_LOG_LEVEL=2
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
+
+
 def create_argument_parser():
     """
     Parses the arguments passed to rasa_codeless through RASAC CLI tool.
@@ -131,12 +136,20 @@ def run_rasac() -> NoReturn:
         cmdline_args = arg_parser.parse_args()
         interface = cmdline_args.subparser_name
 
+        # creating missing rasa codeless dirs
+        for dir_ in RASA_CODELESS_PROJECT_DIRS:
+            if not os.path.exists(dir_):
+                os.mkdir(path=dir_)
+
         if not interface:
             arg_parser.print_help()
             logger.error("Please specify a valid positional arg out of \'init\' and \'server\', "
                          "to use RASAC CLI.")
             return
         if str.lower(interface) == InterfaceType.INIT:
+            logger.warning("rasa init is deprecated and will be removed "
+                           "in the future")
+
             quiet = cmdline_args.quiet
             debug_mode = cmdline_args.debug
 
@@ -168,7 +181,7 @@ def run_rasac() -> NoReturn:
             except KeyboardInterrupt:
                 logger.error("Gracefully terminating RASAC init...")
 
-        elif str.lower(interface) == "server":
+        elif str.lower(interface) == InterfaceType.SERVER:
             server_port = cmdline_args.port
             debug_mode = cmdline_args.debug
             quiet_mode = cmdline_args.quiet

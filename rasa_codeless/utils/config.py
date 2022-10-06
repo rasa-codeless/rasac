@@ -67,5 +67,3 @@ def get_default_configs(section: Text = ConfigType.ALL) -> Dict:
         return default_configs[Config.SERVER_CONFIGS_KEY]
     else:
         return default_configs
-
-
