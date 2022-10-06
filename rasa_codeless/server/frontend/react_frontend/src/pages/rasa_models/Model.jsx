@@ -1,4 +1,3 @@
-// material
 import {
   Box,
   Modal,
@@ -14,6 +13,7 @@ import {
   FormControlLabel,
   Radio,
   FormLabel,
+  Drawer,
 } from "@mui/material";
 import * as React from "react";
 import { useEffect } from "react";
@@ -57,6 +57,7 @@ import AppTile from "../../components/pageBanner/AppTile";
 import DeleteModal from "../../components/modal/DeleteModal";
 import { configs } from "../../configs";
 import RasaModelsPageTitle from "../../components/pageTitle/RasaModelsPageTitle";
+import Curve from "../../components/curve/Curve";
 
 const Alert = React.forwardRef((props, ref) => (
   <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />
@@ -73,44 +74,6 @@ ChartJS.register(
 );
 
 // ----------------------------------------------------------------------
-
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 400,
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  boxShadow: 24,
-  p: 4,
-};
-
-const options = {
-  responsive: true,
-  plugins: {
-    legend: {
-      position: "top",
-    },
-    title: {
-      display: true,
-      text: "Train and Test Curves",
-    },
-  },
-};
-
-const options_loss = {
-  responsive: true,
-  plugins: {
-    legend: {
-      position: "top",
-    },
-    title: {
-      display: true,
-      text: "Train and Test Loss Curve",
-    },
-  },
-};
 
 export default function RasaModel({
   appConfigs,
@@ -168,14 +131,6 @@ export default function RasaModel({
 
   const [loadingModels, setLoadingModels] = React.useState(false);
 
-  const [curveTypeValue, setCurveTypeValue] = React.useState(
-    "Accuracy"
-  );
-
-  const handleCurveTypeChange = (event) => {
-    setCurveTypeValue(event.target.value);
-  };
-
   useEffect(() => {
     setActiveLink("", "models");
     getModels();
@@ -186,9 +141,6 @@ export default function RasaModel({
       setState({});
     };
   }, []);
-
-  console.log("DATA POINTS FROM BACKEND");
-  console.log(curveDataPoints);
 
   const handleClickOpenDeleteModel = () => {
     setOpenDeleteModel(true);
@@ -211,7 +163,7 @@ export default function RasaModel({
   };
 
   const getModels = () => {
-    setLoadingModels(true)
+    setLoadingModels(true);
 
     axios
       .get(`${configs.getModelListEnpoint}`, {
@@ -227,17 +179,13 @@ export default function RasaModel({
           openGetModelFailAlert(true);
         } else {
           // no error
-          if (data["Model List"] === null) {
+          if (data["model_list"] === null) {
             openGetModelFailAlert(true);
           } else {
-            setTrainedModels(data["Model List"]);
-            setLatestModel(data["Latest Model"]);
+            setTrainedModels(data["model_list"]);
+            setLatestModel(data["latest_model"]);
 
-            console.log(data["Model List"]);
-
-            data["Model List"].map((val) => {
-              console.log(val[0].model_id);
-            });
+            console.log(data);
 
             // trainedModels.map((val) => {
             //   let modelWithCurveData = {
@@ -253,12 +201,12 @@ export default function RasaModel({
           }
         }
 
-        setLoadingModels(false)
+        setLoadingModels(false);
       })
       .catch((err) => {
         console.log(err);
-        setOpenGetModelFailAlert(true);
-        setLoadingModels(false)
+        openGetModelFailAlert(true);
+        setLoadingModels(false);
       });
   };
 
@@ -277,15 +225,17 @@ export default function RasaModel({
         setActiveModel("");
         const data = res.data;
 
+
         if (Object.hasOwn(data, "status")) {
           // error has occcured
           setOpenModelCurveFailAlert(true);
         } else {
           // no error
-          const cData = await data["Model Curve Data Points"];
-          await setCurveDataPoints(JSON.parse(cData));
+          console.log(`curve: `,data);
+          const cData = await data["curve_data"];
+          await setCurveDataPoints(cData);
 
-          if (JSON.parse(cData) === null) {
+          if (cData === null) {
             setOpenModelCurveFailAlert(true);
           } else {
             handleOpenModal(true);
@@ -298,19 +248,6 @@ export default function RasaModel({
         setOpenModelCurveFailAlert(true);
       });
   };
-
-  // NOT IMPLEMENTED
-  // const getIntents = () => {
-  //   axios
-  //     .get(`${configs.getIntentsEndpoint}`, {
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //     })
-  //     .then((res) => {
-  //       console.log(JSON.parse(res.data["Intents"]));
-  //     });
-  // };
 
   const deleteModel = (e, name) => {
     e.preventDefault();
@@ -337,12 +274,12 @@ export default function RasaModel({
           setOpenDeleteModelFailAlert(true);
         } else {
           // no error
-          if (data["Model List"] === null) {
+          if (data["model_list"] === null) {
             setOpenDeleteModelFailAlert(true);
           } else {
             setOpenDeleteModelSuccessAlert(true);
-            setTrainedModels(data["Model List"]);
-            setLatestModel(data["Latest Model"]);
+            setTrainedModels(data["model_list"]);
+            setLatestModel(data["latest_model"]);
           }
         }
       })
@@ -439,22 +376,28 @@ export default function RasaModel({
                 <List
                   sx={{ width: "100%" }}
                   className="app-model-list"
-                  component="nav">
+                  component="nav"
+                >
                   <Divider component="li" variant="fullWidth" />
-                  {count === 0 && loadingModels === true &&
-                    <div className="p-3" style={{ display: "flex", alignItems: "center" }} >
-                      <div style={{ marginRight: "10px" }}>
-                        Loading Models
-                      </div>
-                      <CircularProgress color="inherit" size='12px' style={{ float: "right" }} />
+                  {count === 0 && loadingModels === true && (
+                    <div
+                      className="p-3"
+                      style={{ display: "flex", alignItems: "center" }}
+                    >
+                      <div style={{ marginRight: "10px" }}>Loading Models</div>
+                      <CircularProgress
+                        color="inherit"
+                        size="12px"
+                        style={{ float: "right" }}
+                      />
                     </div>
-                  }
-                  {count === 0 && loadingModels === false &&
+                  )}
+                  {count === 0 && loadingModels === false && (
                     <div className="p-3">
                       Currently there are no Models Available
                     </div>
-                  }
-                  {count !== 0 && loadingModels === false &&
+                  )}
+                  {count !== 0 && loadingModels === false && (
                     <>
                       {_DATA
                         .currentData()
@@ -471,22 +414,24 @@ export default function RasaModel({
                           }
                         })
                         .map((val) => (
-                          <>
-                            <Box key={val[0].model_id}>
+                          <Box key={val.model_id}>
+                            <Box>
                               <ListItem className="w-100 app-model-list-item">
                                 <ListItemIcon>
                                   <Psychology />
                                 </ListItemIcon>
                                 <ListItemText
                                   id="switch-list-label-wifi"
-                                  primary={val[0].model_id}
-                                  secondary={`Train Accuracy: ${val[0].train_acc !== ""
-                                      ? Math.floor(100 * val[0].train_acc) + "%"
+                                  primary={val.model_id}
+                                  secondary={`Train Accuracy: ${
+                                    val.train_acc !== ""
+                                      ? Math.floor(100 * val.train_acc) + "%"
                                       : "N/A"
-                                    } Test Accuracy: ${val[0].test_acc !== ""
-                                      ? Math.floor(100 * val[0].test_acc) + "%"
+                                  } Test Accuracy: ${
+                                    val.test_acc !== ""
+                                      ? Math.floor(100 * val.test_acc) + "%"
                                       : "N/A"
-                                    }`}
+                                  }`}
                                 />
                                 <Box className="d-none d-md-block">
                                   <Stack
@@ -495,7 +440,7 @@ export default function RasaModel({
                                     className={"float-end"}
                                     alignItems="center"
                                   >
-                                    {latestModel === val[0].model_id && (
+                                    {latestModel === val.model_id && (
                                       <Chip
                                         label="Latest"
                                         color="success"
@@ -503,7 +448,7 @@ export default function RasaModel({
                                       />
                                     )}
                                     {curveLoading &&
-                                      activeModel === val[0].model_id ? (
+                                    activeModel === val.model_id ? (
                                       <LoadingButton
                                         loading
                                         loadingPosition="start"
@@ -526,14 +471,14 @@ export default function RasaModel({
                                         }}
                                         startIcon={<StackedLineChart />}
                                         onClick={() =>
-                                          getCurveDataPoints(val[0].model_id)
+                                          getCurveDataPoints(val.model_id)
                                         }
                                       >
                                         Curve
                                       </Button>
                                     )}
                                     {downloadLoading &&
-                                      activeDownloadModel === val[0].model_id ? (
+                                    activeDownloadModel === val.model_id ? (
                                       <LoadingButton
                                         loading
                                         loadingPosition="start"
@@ -556,7 +501,7 @@ export default function RasaModel({
                                         }}
                                         startIcon={<DownloadForOffline />}
                                         onClick={(e) => {
-                                          downloadModel(e, val[0].model_id);
+                                          downloadModel(e, val.model_id);
                                         }}
                                       >
                                         Download
@@ -564,7 +509,7 @@ export default function RasaModel({
                                     )}
 
                                     {deleteLoading &&
-                                      activeDeleteModel === val[0].model_id ? (
+                                    activeDeleteModel === val.model_id ? (
                                       <LoadingButton
                                         loading
                                         loadingPosition="start"
@@ -588,7 +533,7 @@ export default function RasaModel({
                                         startIcon={<Cancel />}
                                         data-bs-toggle="modal"
                                         data-bs-target={`#${generateModelId(
-                                          val[0].model_id
+                                          val.model_id
                                         )}`}
                                       >
                                         Delete
@@ -614,10 +559,10 @@ export default function RasaModel({
                               </ListItem>
                               <Divider component="li" variant="fullWidth" />
                               <DeleteModal
-                                id={`${generateModelId(val[0].model_id)}`}
+                                id={`${generateModelId(val.model_id)}`}
                                 title={`Delete Model`}
-                                body={`Do you want to permenently delete the Model ${val[0].model_id}?`}
-                                item={`${val[0].model_id}`}
+                                body={`Do you want to permenently delete the Model ${val.model_id}?`}
+                                item={`${val.model_id}`}
                                 deleteHandler={deleteModel}
                                 buttonPrimary={{
                                   button: true,
@@ -639,101 +584,15 @@ export default function RasaModel({
                             </Box>
 
                             {curveDataPoints !== null ? (
-                              <Modal
-                                open={openModal}
-                                onClose={handleCloseModal}
-                                aria-labelledby="modal-modal-title"
-                                aria-describedby="modal-modal-description"
-                              >
-                                <div>
-
-                                <Box
-                                sx={style}
-                                style={{
-                                  width: "80vw",
-                                  borderRadius: "30px",
-                                }}
-                              >
-
-
-                                <div>
-                                <FormLabel id="demo-row-radio-buttons-group-label">Choose Curve Type</FormLabel>
-                                <RadioGroup
-                                  row
-                                  aria-labelledby="demo-controlled-radio-buttons-group"
-                                  name="controlled-radio-buttons-group"
-                                  value={curveTypeValue}
-                                  onChange={handleCurveTypeChange}
-                                >
-                                  <FormControlLabel
-                                  value="Accuracy"
-                                  control={<Radio />}
-                                  label="Accuracy Curves"
-                                />
-                                <FormControlLabel
-                                  value="Loss"
-                                  control={<Radio />}
-                                  label="Loss Curves"
-                                />
-                                </RadioGroup>
-                                </div>
-
-                                
-                                {curveTypeValue === "Accuracy" ?
-                                <Line
-                                  options={options}
-                                  data={{
-                                    labels: curveDataPoints["epochs"],
-                                    datasets: [
-                                      {
-                                        label: "Train",
-                                        data: curveDataPoints["train"],
-                                        borderColor: "rgb(255, 99, 132)",
-                                        backgroundColor:
-                                          "rgba(255, 99, 132, 0.5)",
-                                      },
-                                      {
-                                        label: "Test",
-                                        data: curveDataPoints["test"],
-                                        borderColor: "rgb(53, 162, 235)",
-                                        backgroundColor:
-                                          "rgba(53, 162, 235, 0.5)",
-                                      },
-                                    ],
-                                  }}
-                                />
-                                :
-                                <Line
-                                  options={options}
-                                  data={{
-                                    labels: curveDataPoints["epochs"],
-                                    datasets: [
-                                      {
-                                        label: "Train",
-                                        data: curveDataPoints["train_loss"],
-                                        borderColor: "rgb(255, 99, 132)",
-                                        backgroundColor:
-                                          "rgba(255, 99, 132, 0.5)",
-                                      },
-                                      {
-                                        label: "Test",
-                                        data: curveDataPoints["test_loss"],
-                                        borderColor: "rgb(53, 162, 235)",
-                                        backgroundColor:
-                                          "rgba(53, 162, 235, 0.5)",
-                                      },
-                                    ],
-                                  }}
-                                />
-                                }
-                                
-                                </Box>
-                                </div>
-                              </Modal>
+                              <Curve 
+                                curveDataPoints={curveDataPoints}
+                                openModal={openModal}
+                                handleCloseModal={handleCloseModal}
+                              />
                             ) : (
                               <></>
                             )}
-                          </>
+                          </Box>
                         ))}
                       <Box
                         style={{ display: "flex", justifyContent: "center" }}
@@ -747,9 +606,7 @@ export default function RasaModel({
                         />
                       </Box>
                     </>
-                  }
-
-
+                  )}
                 </List>
               </div>
             </div>
@@ -769,7 +626,7 @@ export default function RasaModel({
               severity="success"
               sx={{ width: "100%" }}
             >
-              Model was deleted successfully!!
+              Model deleted
             </Alert>
           </Snackbar>
           <Snackbar
@@ -786,7 +643,7 @@ export default function RasaModel({
               severity="error"
               sx={{ width: "100%" }}
             >
-              ERROR: Unable to delete model
+              Model deleting failed
             </Alert>
           </Snackbar>
           <Dialog
@@ -830,7 +687,7 @@ export default function RasaModel({
               severity="error"
               sx={{ width: "100%" }}
             >
-              ERROR: Was unable to delete model
+              Model deleting failed
             </Alert>
           </Snackbar>
           <Snackbar
@@ -864,7 +721,7 @@ export default function RasaModel({
               severity="error"
               sx={{ width: "100%" }}
             >
-              ERROR: Unable to retrieve models
+              Model retrieving failed
             </Alert>
           </Snackbar>
           {/* </Page> */}

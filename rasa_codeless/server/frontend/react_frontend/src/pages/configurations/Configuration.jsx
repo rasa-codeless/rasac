@@ -50,7 +50,7 @@ export default function Configurations({
   hideAppNotification,
   scrollToTop,
   setActiveLink,
-  appSinhala
+  appSinhala,
 }) {
   // PIPELINE
   // used to check whether to display a component or not
@@ -722,7 +722,7 @@ export default function Configurations({
 
   // handle chnage for chosenModel
   const handleChosenModelChange = async (event) => {
-    setLoadingSetConfig(true)
+    setLoadingSetConfig(true);
 
     if (event.target.value === "custom_settings") {
       await setPipelineValuesToFalse();
@@ -732,7 +732,7 @@ export default function Configurations({
     }
     await setChosenModel(event.target.value);
 
-    setLoadingSetConfig(false)
+    setLoadingSetConfig(false);
   };
 
   const handleLanguageModelChange = (event) => {
@@ -885,7 +885,7 @@ export default function Configurations({
   };
 
   const handleRegexFeaturizerNumOfPatternsChange = (event) => {
-    setRegexFeaturizerNumOfPatterns(parseInt(event.target.value, 10));
+    setRegexFeaturizerNumOfPatterns(parseInt(event.target.value, 10) || "");
 
     if (
       featurizerValues.regexF === true &&
@@ -918,7 +918,7 @@ export default function Configurations({
   };
 
   const handleCountVectorsFeaturizerMinNGramChange = (event) => {
-    setCountVectorsFeaturizerMinNGram(parseInt(event.target.value, 10));
+    setCountVectorsFeaturizerMinNGram(parseInt(event.target.value, 10) || "");
 
     if (
       featurizerValues.countVectorsF === true &&
@@ -931,7 +931,7 @@ export default function Configurations({
   };
 
   const handleCountVectorsFeaturizerMaxNGramChange = (event) => {
-    setCountVectorsFeaturizerMaxNGram(parseInt(event.target.value, 10));
+    setCountVectorsFeaturizerMaxNGram(parseInt(event.target.value, 10) || "");
 
     if (
       featurizerValues.countVectorsF === true &&
@@ -952,7 +952,7 @@ export default function Configurations({
   };
 
   const handleCountVectorsFeaturizerTextSizeChange = (event) => {
-    setCountVectorsFeaturizerTextSize(parseInt(event.target.value, 10));
+    setCountVectorsFeaturizerTextSize(parseInt(event.target.value, 10) || "");
 
     if (
       featurizerValues.countVectorsF === true &&
@@ -965,7 +965,9 @@ export default function Configurations({
   };
 
   const handleCountVectorsFeaturizerResponseSizeChange = (event) => {
-    setCountVectorsFeaturizerResponseSize(parseInt(event.target.value, 10));
+    setCountVectorsFeaturizerResponseSize(
+      parseInt(event.target.value, 10) || ""
+    );
 
     if (
       featurizerValues.countVectorsF === true &&
@@ -978,7 +980,9 @@ export default function Configurations({
   };
 
   const handleCountVectorsFeaturizerActionTextSizeChange = (event) => {
-    setCountVectorsFeaturizerActionTextSize(parseInt(event.target.value, 10));
+    setCountVectorsFeaturizerActionTextSize(
+      parseInt(event.target.value, 10) || ""
+    );
 
     if (
       featurizerValues.countVectorsF === true &&
@@ -1107,7 +1111,9 @@ export default function Configurations({
 
   // handle chnage for LogisticRegressionClassifier
   const handleLogisticRegressionClassifierMaxIterChange = (event) => {
-    setLogisticRegressionClassifierMaxIter(parseInt(event.target.value, 10));
+    setLogisticRegressionClassifierMaxIter(
+      parseInt(event.target.value, 10 || "")
+    );
 
     if (
       classifierValues.logisticC === true &&
@@ -1139,7 +1145,7 @@ export default function Configurations({
 
   const handleLogisticRegressionClassifierRandomStateChange = (event) => {
     setLogisticRegressionClassifierRandomState(
-      parseInt(event.target.value, 10)
+      parseInt(event.target.value, 10) || ""
     );
 
     if (
@@ -1169,7 +1175,7 @@ export default function Configurations({
 
   // handle chnage for SklearnIntentClassifier
   const handleSklearnIntentClassifierC1Change = (event) => {
-    setSklearnIntentClassifierC1(parseInt(event.target.value, 10));
+    setSklearnIntentClassifierC1(parseInt(event.target.value, 10) || "");
 
     if (
       classifierValues.skLearnC === true &&
@@ -1182,7 +1188,7 @@ export default function Configurations({
   };
 
   const handleSklearnIntentClassifierC2Change = (event) => {
-    setSklearnIntentClassifierC2(parseInt(event.target.value, 10));
+    setSklearnIntentClassifierC2(parseInt(event.target.value, 10) || "");
 
     if (
       classifierValues.skLearnC === true &&
@@ -1195,7 +1201,7 @@ export default function Configurations({
   };
 
   const handleSklearnIntentClassifierC3Change = (event) => {
-    setSklearnIntentClassifierC3(parseInt(event.target.value, 10));
+    setSklearnIntentClassifierC3(parseInt(event.target.value, 10) || "");
 
     if (
       classifierValues.skLearnC === true &&
@@ -1208,7 +1214,7 @@ export default function Configurations({
   };
 
   const handleSklearnIntentClassifierC4Change = (event) => {
-    setSklearnIntentClassifierC4(parseInt(event.target.value, 10));
+    setSklearnIntentClassifierC4(parseInt(event.target.value, 10) || "");
 
     if (
       classifierValues.skLearnC === true &&
@@ -1221,7 +1227,7 @@ export default function Configurations({
   };
 
   const handleSklearnIntentClassifierC5Change = (event) => {
-    setSklearnIntentClassifierC5(parseInt(event.target.value, 10));
+    setSklearnIntentClassifierC5(parseInt(event.target.value, 10) || "");
 
     if (
       classifierValues.skLearnC === true &&
@@ -1234,7 +1240,7 @@ export default function Configurations({
   };
 
   const handleSklearnIntentClassifierC6Change = (event) => {
-    setSklearnIntentClassifierC6(parseInt(event.target.value, 10));
+    setSklearnIntentClassifierC6(parseInt(event.target.value, 10) || "");
 
     if (
       classifierValues.skLearnC === true &&
@@ -1265,7 +1271,7 @@ export default function Configurations({
   };
 
   const handleSklearnIntentClassifierMaxFoldsChange = (event) => {
-    setSklearnIntentClassifierMaxFolds(parseInt(event.target.value, 10));
+    setSklearnIntentClassifierMaxFolds(parseInt(event.target.value, 10) || "");
 
     if (
       classifierValues.skLearnC === true &&
@@ -1288,7 +1294,7 @@ export default function Configurations({
 
   // handle chnage for DIETClassifier
   const handleDIETClassifierEpochsChange = (event) => {
-    setDIETClassifierEpochs(parseInt(event.target.value, 10));
+    setDIETClassifierEpochs(parseInt(event.target.value, 10) || "");
 
     if (
       classifierValues.dietC === true &&
@@ -1400,7 +1406,7 @@ export default function Configurations({
   };
 
   const handleCRFEntityExtractorMaxIterationsChange = (event) => {
-    setCRFEntityExtractorMaxIterations(parseInt(event.target.value, 10));
+    setCRFEntityExtractorMaxIterations(parseInt(event.target.value, 10) || "");
 
     if (
       extractorValues.crfE === true &&
@@ -1450,7 +1456,7 @@ export default function Configurations({
 
   // handle chnage for DucklingEntityExtractor
   const handleDucklingEntityExtractorPortNoChange = (event) => {
-    let value = parseInt(event.target.value, 10);
+    let value = parseInt(event.target.value, 10) || "";
 
     if (value > ducklingEntityExtractorMaxPortNo)
       value = ducklingEntityExtractorMaxPortNo;
@@ -1482,7 +1488,7 @@ export default function Configurations({
   };
 
   const handleDucklingEntityExtractorTimeoutChange = (event) => {
-    let value = parseInt(event.target.value, 10);
+    let value = parseInt(event.target.value, 10) || "";
 
     if (value < ducklingEntityExtractorMinTimeout)
       value = ducklingEntityExtractorMinTimeout;
@@ -1519,7 +1525,7 @@ export default function Configurations({
   // POLICIES - handleChange
   // handle chnage for TEDPolicy
   const handleTEDPolicyEpochsChange = (event) => {
-    setTEDPolicyEpochs(parseInt(event.target.value, 10));
+    setTEDPolicyEpochs(parseInt(event.target.value, 10) || "");
 
     if (policyValues.tedP === true && event.target.value < 1) {
       setTEDPolicyEpochsError(true);
@@ -1529,7 +1535,7 @@ export default function Configurations({
   };
 
   const handleTEDPolicyMaxHistoryChange = (event) => {
-    setTEDPolicyMaxHistory(parseInt(event.target.value, 10));
+    setTEDPolicyMaxHistory(parseInt(event.target.value, 10) || "");
 
     if (policyValues.tedP === true && event.target.value < 1) {
       setTEDPolicyMaxHistoryError(true);
@@ -1548,7 +1554,7 @@ export default function Configurations({
 
   // handle chnage for UnexpecTEDIntentPolicy
   const handleUnexpecTEDIntentPolicyEpochsChange = (event) => {
-    setUnexpecTEDIntentPolicyEpochs(parseInt(event.target.value, 10));
+    setUnexpecTEDIntentPolicyEpochs(parseInt(event.target.value, 10) || "");
 
     if (policyValues.unexpectedP === true && event.target.value < 1) {
       setUnexpecTEDIntentPolicyEpochsError(true);
@@ -1558,7 +1564,7 @@ export default function Configurations({
   };
 
   const handleUnexpecTEDIntentPolicyMaxHistoryChange = (event) => {
-    setUnexpecTEDIntentPolicyMaxHistory(parseInt(event.target.value, 10));
+    setUnexpecTEDIntentPolicyMaxHistory(parseInt(event.target.value, 10) || "");
 
     if (policyValues.unexpectedP === true && event.target.value < 1) {
       setUnexpecTEDIntentPolicyMaxHistoryError(true);
@@ -1569,7 +1575,7 @@ export default function Configurations({
 
   // handle chnage for MemoizationPolicy
   const handleMemoizationPolicyMaxHistoryChange = (event) => {
-    setMemoizationPolicyMaxHistory(parseInt(event.target.value, 10));
+    setMemoizationPolicyMaxHistory(parseInt(event.target.value, 10) || "");
 
     if (policyValues.memoizationP === true && event.target.value < 1) {
       setMemoizationPolicyMaxHistoryError(true);
@@ -1580,7 +1586,9 @@ export default function Configurations({
 
   // handle chnage for AugmentedMemoizationPolicy
   const handleAugmentedMemoizationPolicyMaxHistoryChange = (event) => {
-    setAugmentedMemoizationPolicyMaxHistory(parseInt(event.target.value, 10));
+    setAugmentedMemoizationPolicyMaxHistory(
+      parseInt(event.target.value, 10) || ""
+    );
 
     if (policyValues.augmentedMP === true && event.target.value < 1) {
       setAugmentedMemoizationPolicyMaxHistoryError(true);
@@ -2173,7 +2181,7 @@ export default function Configurations({
               epochs: DIETClassifierEpochs,
               entity_recognition: DIETClassifierEntityRecognition,
               intent_classification: DIETClassifierIntentClassification,
-              evaluate_on_number_of_examples: 8,
+              evaluate_on_number_of_examples: 150,
               evaluate_every_number_of_epochs: 1,
               tensorboard_log_directory: "./tensorboard",
               tensorboard_log_level: "epoch",
@@ -2393,6 +2401,7 @@ export default function Configurations({
             // no error
             setModelTrainLoading(false);
             setOpenTraingModelSuccessAlert(true);
+            // TODO :update the model list in the models page (must share a global state)
           }
         })
         .catch((err) => {
@@ -2419,7 +2428,7 @@ export default function Configurations({
         },
       })
       .then(async (res) => {
-        // const cData = await res.data["Model Config"];
+        // const cData = await res.data["model_config"];
         // configData1 = JSON.parse(cData);
 
         const data = res.data;
@@ -2429,11 +2438,11 @@ export default function Configurations({
           setOpenSetConfigFailAlert(true);
         } else {
           // no error
-          if (data["Model Config"] === null) {
+          if (data["model_config"] === null) {
             setOpenSetConfigFailAlert(true);
           } else {
-            const cData = await data["Model Config"];
-            configData = JSON.parse(cData);
+            const cData = await data["model_config"];
+            configData = cData;
 
             await setComponentsToFalse();
 
@@ -2501,6 +2510,7 @@ export default function Configurations({
           // no error
           setCancelTraining(false);
           setOpenCancelTraingModelSuccessAlert(true);
+          // TODO :update the model list in the models page (must share a global state)
         }
       })
       .catch((err) => {
@@ -2810,21 +2820,23 @@ export default function Configurations({
         },
       })
       .then((res) => {
-        setTrainModels(res.data["Model List"]);
+        setTrainModels(res.data["model_list"]);
       });
   }, []);
 
   useEffect(() => {
     var tempArray = [];
     axios
-      .get(`${configs.getModelNamesEndpoint}`, {
+      .get(`${configs.getModelListEnpoint}`, {
         headers: {
           "Content-Type": "application/json",
         },
       })
       .then((res) => {
-        for (var i = 0; i < JSON.parse(res.data["Models"]).length; i++) {
-          tempArray.push(JSON.parse(res.data["Models"])[i]["model_id"]);
+        console.log(res.data);
+        for (var i = 0; i < res.data["model_list"].length; i++) {
+          tempArray.push(res.data["model_list"][i]["model_id"]);
+          // tempArray.push(String(res.data["model_list"][i]["model_id"]).replace(".tar.gz", "")); // if needed to remove the ext
         }
       })
       .finally(() => {
@@ -2857,15 +2869,16 @@ export default function Configurations({
 
         <Box className="row align-items-md-stretch p-0 container-middle container-bg overflow-hidden mt-4">
           <Box
-            className="shadow-sm"
-            sx={{ width: "100%", padding: "30px 60px" }}
-          >
+            className="shadow-sm p-4"
+            sx={{ width: "100%" }}>
             <Stack direction="row">
               <Box className="col col-8" sx={{ marginY: "auto" }}>
                 <Stack direction="column" spacing={0.3}>
-                  <h4 className="float-start h-100 mt-1 dime-page-title">
+                  <Typography
+                    variant="h6"
+                    className="float-start h-100 mt-1 dime-page-title">
                     Choose Configuration from existing models
-                  </h4>
+                  </Typography>
                   <p>
                     Instead of configuring models from scratch, choose
                     configurations of previous models
@@ -2875,21 +2888,28 @@ export default function Configurations({
               <Box
                 className="col col-4"
                 sx={{ marginY: "auto", marginX: "auto", display: "flex" }}
-                alignContent="center"
-              >
-                <div style={{ display: "flex", alignItems: "center", width: "60px" }}>
-                {
-                  loadingSetConfig && <CircularProgress color="inherit" style={{ float: "right" }} />
-                }
+                alignContent="center">
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    width: "60px",
+                  }}>
+                  {loadingSetConfig && (
+                    <CircularProgress
+                      color="inherit"
+                      style={{ float: "right" }}
+                    />
+                  )}
                 </div>
                 <TextField
+                  fullWidth={true}
                   value={chosenModel}
                   onChange={handleChosenModelChange}
                   select // tell TextField to render select
                   label="Existing Models"
                   className="TokenizerDropDowns float-end"
-                  style={{ float: "right" }}
-                >
+                  style={{ float: "right" }}>
                   <MenuItem value="custom_settings">Custom Settings</MenuItem>
                   {modelNamesConfig?.map((val) => {
                     return (
@@ -2905,12 +2925,15 @@ export default function Configurations({
         </Box>
 
         <form onSubmit={trainModel}>
-          <Box className="row align-items-md-stretch p-0 container-middle container-bg overflow-hidden mt-4">
-            <Box sx={{ width: "100%", padding: "30px 60px 0px 60px" }}>
+          <Box className="row align-items-md-stretch p-3 container-middle container-bg overflow-hidden mt-4">
+            <Box sx={{ width: "100%" }}>
               <Stack direction="column" spacing={0.3}>
-                <h4 className="float-start h-100 mt-1 dime-page-title">
+                <Typography
+                  variant="h6"
+                  className="float-start h-100 mt-1 dime-page-title"
+                >
                   Pipeline Components
-                </h4>
+                </Typography>
                 <p>
                   You can configure your pipeline components from scratch. For
                   further details regarding the components refer{" "}
@@ -2927,9 +2950,8 @@ export default function Configurations({
               </Stack>
             </Box>
             <Box
-              className="shadow-sm"
-              sx={{ width: "100%", padding: "10px 60px 30px 60px" }}
-            >
+              className=""
+              sx={{ width: "100%" }}>
               <Stack direction="row">
                 <Box className="col col-4" sx={{ marginTop: 4 }}>
                   <Stack direction="column">
@@ -3163,7 +3185,7 @@ export default function Configurations({
                     {/* <Box className="mb-4"> */}
                     <Box>
                       {mitieLM && (
-                        <Container>
+                        <Container className="m-0 p-0">
                           <Card
                             className="container-bg  material-onyx"
                             sx={{
@@ -3189,7 +3211,7 @@ export default function Configurations({
                       )}
 
                       {spacyLM && (
-                        <Container>
+                        <Container className="m-0 p-0">
                           <Card
                             className="container-bg  material-onyx material-onyx"
                             sx={{
@@ -3290,7 +3312,7 @@ export default function Configurations({
                     </Box>
                     <Box className="mb-4">
                       {tokenizerValue === "WhitespaceTokenizer" && (
-                        <Container>
+                        <Container className="m-0 p-0">
                           <Card
                             className="container-bg  material-onyx"
                             sx={{
@@ -3351,7 +3373,7 @@ export default function Configurations({
                       )}
 
                       {tokenizerValue === "JiebaTokenizer" && (
-                        <Container>
+                        <Container className="m-0 p-0">
                           <Card
                             className="container-bg  material-onyx"
                             sx={{
@@ -3402,7 +3424,7 @@ export default function Configurations({
                       )}
 
                       {tokenizerValue === "MitieTokenizer" && (
-                        <Container>
+                        <Container className="m-0 p-0">
                           <Card
                             className="container-bg  material-onyx"
                             sx={{
@@ -3450,7 +3472,7 @@ export default function Configurations({
                       )}
 
                       {tokenizerValue === "SpacyTokenizer" && (
-                        <Container>
+                        <Container className="m-0 p-0">
                           <Card
                             className="container-bg  material-onyx"
                             sx={{
@@ -3511,7 +3533,7 @@ export default function Configurations({
                       )}
 
                       {tokenizerValue === "SEETMTokenizer" && (
-                        <Container>
+                        <Container className="m-0 p-0">
                           <Card
                             className="container-bg  material-onyx"
                             sx={{
@@ -3535,7 +3557,7 @@ export default function Configurations({
                     </Box>
                     <Box className="mb-4">
                       {mitieF && (
-                        <Container>
+                        <Container className="m-0 p-0">
                           <Card
                             className="container-bg  material-onyx"
                             sx={{
@@ -3568,7 +3590,7 @@ export default function Configurations({
                       )}
 
                       {spacyF && (
-                        <Container>
+                        <Container className="m-0 p-0">
                           <Card
                             className="container-bg  material-onyx"
                             sx={{
@@ -3601,7 +3623,7 @@ export default function Configurations({
                       )}
 
                       {convertF && (
-                        <Container>
+                        <Container className="m-0 p-0">
                           <Card
                             className="container-bg  material-onyx"
                             sx={{
@@ -3633,7 +3655,7 @@ export default function Configurations({
                       )}
 
                       {languageModelF && (
-                        <Container>
+                        <Container className="m-0 p-0">
                           <Card
                             className="container-bg  material-onyx"
                             sx={{
@@ -3702,7 +3724,7 @@ export default function Configurations({
                       )}
 
                       {regexF && (
-                        <Container>
+                        <Container className="m-0 p-0">
                           <Card
                             className="container-bg  material-onyx"
                             sx={{
@@ -3760,9 +3782,6 @@ export default function Configurations({
                                   fullWidth={true}
                                   style={{ width: "390px" }}
                                   type="number"
-                                  inputProps={{
-                                    regexFeaturizerMinNumOfPatterns,
-                                  }}
                                   value={regexFeaturizerNumOfPatterns}
                                   onChange={
                                     handleRegexFeaturizerNumOfPatternsChange
@@ -3786,7 +3805,7 @@ export default function Configurations({
                       )}
 
                       {countVectorsF && (
-                        <Container>
+                        <Container className="m-0 p-0">
                           <Card
                             className="container-bg  material-onyx"
                             sx={{
@@ -3820,9 +3839,6 @@ export default function Configurations({
                                 <TextField
                                   fullWidth={true}
                                   type="number"
-                                  inputProps={{
-                                    countVectorsFeaturizerMinNGramValue,
-                                  }}
                                   value={countVectorsFeaturizerMinNGram}
                                   onChange={
                                     handleCountVectorsFeaturizerMinNGramChange
@@ -3842,9 +3858,6 @@ export default function Configurations({
                                 <TextField
                                   fullWidth={true}
                                   type="number"
-                                  inputProps={{
-                                    countVectorsFeaturizerMaxNGramValue,
-                                  }}
                                   value={countVectorsFeaturizerMaxNGram}
                                   onChange={
                                     handleCountVectorsFeaturizerMaxNGramChange
@@ -3896,9 +3909,6 @@ export default function Configurations({
                                 <TextField
                                   fullWidth={true}
                                   type="number"
-                                  inputProps={{
-                                    countVectorsFeaturizerMinTextSize,
-                                  }}
                                   value={countVectorsFeaturizerTextSize}
                                   onChange={
                                     handleCountVectorsFeaturizerTextSizeChange
@@ -3920,9 +3930,6 @@ export default function Configurations({
                                 <TextField
                                   fullWidth={true}
                                   type="number"
-                                  inputProps={{
-                                    countVectorsFeaturizerMinResponseSize,
-                                  }}
                                   value={countVectorsFeaturizerResponseSize}
                                   onChange={
                                     handleCountVectorsFeaturizerResponseSizeChange
@@ -3944,9 +3951,6 @@ export default function Configurations({
                                 <TextField
                                   fullWidth={true}
                                   type="number"
-                                  inputProps={{
-                                    countVectorsFeaturizerMinActionTextSize,
-                                  }}
                                   value={countVectorsFeaturizerActionTextSize}
                                   onChange={
                                     handleCountVectorsFeaturizerActionTextSizeChange
@@ -3970,7 +3974,7 @@ export default function Configurations({
                       )}
 
                       {lexicalSyntacticF && (
-                        <Container>
+                        <Container className="m-0 p-0">
                           <Card
                             className="container-bg  material-onyx"
                             sx={{
@@ -4620,7 +4624,7 @@ export default function Configurations({
                       )}
 
                       {gensimF && (
-                        <Container>
+                        <Container className="m-0 p-0">
                           <Card
                             className="container-bg  material-onyx"
                             sx={{
@@ -4683,7 +4687,7 @@ export default function Configurations({
                     </Box>
                     <Box className="mb-4">
                       {mitieC && (
-                        <Container>
+                        <Container className="m-0 p-0">
                           <Card
                             className="container-bg  material-onyx"
                             sx={{
@@ -4701,7 +4705,7 @@ export default function Configurations({
                       )}
 
                       {logisticC && (
-                        <Container>
+                        <Container className="m-0 p-0">
                           <Card
                             className="container-bg  material-onyx"
                             sx={{
@@ -4716,9 +4720,6 @@ export default function Configurations({
                             LogisticRegressionClassifier
                             <TextField
                               type="number"
-                              inputProps={{
-                                logisticRegressionClassifierMaxIterValue,
-                              }}
                               value={logisticRegressionClassifierMaxIter}
                               onChange={
                                 handleLogisticRegressionClassifierMaxIterChange
@@ -4783,9 +4784,6 @@ export default function Configurations({
                             <TextField
                               style={{ width: "390px" }}
                               type="number"
-                              inputProps={{
-                                logisticRegressionClassifierMinRandomState,
-                              }}
                               value={logisticRegressionClassifierRandomState}
                               onChange={
                                 handleLogisticRegressionClassifierRandomStateChange
@@ -4809,7 +4807,7 @@ export default function Configurations({
                       )}
 
                       {skLearnC && (
-                        <Container>
+                        <Container className="m-0 p-0">
                           <Card
                             sx={{
                               height: "fit-content",
@@ -4825,7 +4823,6 @@ export default function Configurations({
                             <br />
                             <TextField
                               type="number"
-                              inputProps={{ sklearnIntentClassifierMinC }}
                               value={sklearnIntentClassifierC1}
                               onChange={handleSklearnIntentClassifierC1Change}
                               variant="outlined"
@@ -4840,7 +4837,6 @@ export default function Configurations({
                             />
                             <TextField
                               type="number"
-                              inputProps={{ sklearnIntentClassifierMinC }}
                               value={sklearnIntentClassifierC2}
                               onChange={handleSklearnIntentClassifierC2Change}
                               variant="outlined"
@@ -4855,7 +4851,6 @@ export default function Configurations({
                             />
                             <TextField
                               type="number"
-                              inputProps={{ sklearnIntentClassifierMinC }}
                               value={sklearnIntentClassifierC3}
                               onChange={handleSklearnIntentClassifierC3Change}
                               variant="outlined"
@@ -4870,7 +4865,6 @@ export default function Configurations({
                             />
                             <TextField
                               type="number"
-                              inputProps={{ sklearnIntentClassifierMinC }}
                               value={sklearnIntentClassifierC4}
                               onChange={handleSklearnIntentClassifierC4Change}
                               variant="outlined"
@@ -4885,7 +4879,6 @@ export default function Configurations({
                             />
                             <TextField
                               type="number"
-                              inputProps={{ sklearnIntentClassifierMinC }}
                               value={sklearnIntentClassifierC5}
                               onChange={handleSklearnIntentClassifierC5Change}
                               variant="outlined"
@@ -4900,7 +4893,6 @@ export default function Configurations({
                             />
                             <TextField
                               type="number"
-                              inputProps={{ sklearnIntentClassifierMinC }}
                               value={sklearnIntentClassifierC6}
                               onChange={handleSklearnIntentClassifierC6Change}
                               variant="outlined"
@@ -4955,9 +4947,6 @@ export default function Configurations({
                             <br />
                             <TextField
                               type="number"
-                              inputProps={{
-                                sklearnIntentClassifierMinMaxFolds,
-                              }}
                               value={sklearnIntentClassifierMaxFolds}
                               onChange={
                                 handleSklearnIntentClassifierMaxFoldsChange
@@ -5028,7 +5017,7 @@ export default function Configurations({
                       )}
 
                       {keywordC && (
-                        <Container>
+                        <Container className="m-0 p-0">
                           <Card
                             className="container-bg  material-onyx"
                             sx={{
@@ -5063,7 +5052,7 @@ export default function Configurations({
                       )}
 
                       {dietC && (
-                        <Container>
+                        <Container className="m-0 p-0">
                           <Card
                             className="container-bg  material-onyx"
                             sx={{
@@ -5081,7 +5070,6 @@ export default function Configurations({
                                 <TextField
                                   fullWidth={true}
                                   type="number"
-                                  inputProps={{ DIETClassifierMinEpochs }}
                                   value={DIETClassifierEpochs}
                                   onChange={handleDIETClassifierEpochsChange}
                                   variant="outlined"
@@ -5131,7 +5119,7 @@ export default function Configurations({
                       )}
 
                       {fallbackC && (
-                        <Container>
+                        <Container className="m-0 p-0">
                           <Card
                             className="container-bg  material-onyx"
                             sx={{
@@ -5170,9 +5158,9 @@ export default function Configurations({
                         </Container>
                       )}
                     </Box>
-                    <Box className="mb-4">
+                    <Box className="mb-2">
                       {mitieE && (
-                        <Container>
+                        <Container className="m-0 p-0">
                           <Card
                             sx={{
                               height: "fit-content",
@@ -5189,7 +5177,7 @@ export default function Configurations({
                       )}
 
                       {spacyE && (
-                        <Container>
+                        <Container className="m-0 p-0">
                           <Card
                             className="container-bg  material-onyx"
                             sx={{
@@ -5269,7 +5257,7 @@ export default function Configurations({
                       )}
 
                       {crfE && (
-                        <Container>
+                        <Container className="m-0 p-0">
                           <Card
                             className="container-bg  material-onyx"
                             sx={{
@@ -5942,9 +5930,6 @@ export default function Configurations({
                                 <TextField
                                   fullWidth={true}
                                   type="number"
-                                  inputProps={{
-                                    CRFEntityExtractorMinMaxIterations,
-                                  }}
                                   value={CRFEntityExtractorMaxIterations}
                                   onChange={
                                     handleCRFEntityExtractorMaxIterationsChange
@@ -5960,11 +5945,7 @@ export default function Configurations({
                                 <TextField
                                   fullWidth={true}
                                   type="number"
-                                  inputProps={{
-                                    CRFEntityExtractorMinL1,
-                                    CRFEntityExtractorMaxL1,
-                                    step: ".1",
-                                  }}
+                                  inputProps={{ step: ".1" }}
                                   value={CRFEntityExtractorL1}
                                   onChange={handleCRFEntityExtractorL1Change}
                                   variant="outlined"
@@ -5976,11 +5957,7 @@ export default function Configurations({
                                 <TextField
                                   fullWidth={true}
                                   type="number"
-                                  inputProps={{
-                                    CRFEntityExtractorMinL2,
-                                    CRFEntityExtractorMaxL2,
-                                    step: ".1",
-                                  }}
+                                  inputProps={{ step: ".1" }}
                                   value={CRFEntityExtractorL2}
                                   onChange={handleCRFEntityExtractorL2Change}
                                   variant="outlined"
@@ -6026,7 +6003,7 @@ export default function Configurations({
                       )}
 
                       {ducklingE && (
-                        <Container>
+                        <Container className="m-0 p-0">
                           <Card
                             sx={{
                               height: "fit-content",
@@ -6042,10 +6019,6 @@ export default function Configurations({
                             <br />
                             <TextField
                               type="number"
-                              inputProps={{
-                                ducklingEntityExtractorMinPortNo,
-                                ducklingEntityExtractorMaxPortNo,
-                              }}
                               value={ducklingEntityExtractorPortNo}
                               onChange={
                                 handleDucklingEntityExtractorPortNoChange
@@ -6129,7 +6102,6 @@ export default function Configurations({
                             <br />
                             <TextField
                               type="number"
-                              inputProps={{ ducklingEntityExtractorMinTimeout }}
                               value={ducklingEntityExtractorTimeout}
                               onChange={
                                 handleDucklingEntityExtractorTimeoutChange
@@ -6143,7 +6115,7 @@ export default function Configurations({
                       )}
 
                       {regexE && (
-                        <Container>
+                        <Container className="m-0 p-0">
                           <Card
                             className="container-bg  material-onyx"
                             sx={{
@@ -6225,7 +6197,7 @@ export default function Configurations({
                       )}
 
                       {entityE && (
-                        <Container>
+                        <Container className="m-0 p-0">
                           <Card
                             className="container-bg  material-onyx"
                             sx={{
@@ -6253,12 +6225,14 @@ export default function Configurations({
             </Box>
           </Box>
 
-          <Box className="row align-items-md-stretch p-0 container-middle container-bg overflow-hidden mt-4">
-            <Box sx={{ width: "100%", padding: "30px 60px 0px 60px" }}>
+          <Box className="row align-items-md-stretch p-3 container-middle container-bg overflow-hidden mt-4">
+            <Box sx={{ width: "100%" }}>
               <Stack direction="column" spacing={0.3}>
-                <h4 className="float-start h-100 mt-1 dime-page-title">
+                <Typography
+                  variant="h6"
+                  className="float-start h-100 mt-1 dime-page-title">
                   Policy Components
-                </h4>
+                </Typography>
                 <p>
                   You can configure your policy components from scratch. For
                   further details regarding the components refer{" "}
@@ -6274,18 +6248,16 @@ export default function Configurations({
               </Stack>
             </Box>
             <Box
-              className="shadow-sm"
-              sx={{ width: "100%", padding: "10px 60px 30px 60px" }}
-            >
+              className=""
+              sx={{ width: "100%" }}>
               <Stack direction="row">
-                <Box className="col col-4" sx={{ marginTop: 4 }}>
+                <Box className="col col-4 mb-2" sx={{ marginTop: 4 }}>
                   <Stack direction="column">
-                    <Box className="mb-4">
+                    <Box className="m-0">
                       <FormControl component="fieldset" variant="standard">
                         <FormLabel
                           className="white-to-black-ease"
-                          component="legend"
-                        >
+                          component="legend">
                           Policies
                         </FormLabel>
                         <FormGroup>
@@ -6351,11 +6323,11 @@ export default function Configurations({
                 </Box>
                 <Box className="col col-8 mt-5">
                   <Stack direction="column">
-                    <Box className="mb-4">
+                    <Box className="mb-2">
                       {tedP && (
-                        <Container>
+                        <Container className="m-0 p-0">
                           <Card
-                            className="container-bg  material-onyx"
+                            className="container-bg material-onyx"
                             sx={{
                               height: "fit-content",
 
@@ -6437,7 +6409,7 @@ export default function Configurations({
                       )}
 
                       {unexpectedP && (
-                        <Container>
+                        <Container className="m-0 p-0">
                           <Card
                             className="container-bg  material-onyx"
                             sx={{
@@ -6495,7 +6467,7 @@ export default function Configurations({
                       )}
 
                       {memoizationP && (
-                        <Container>
+                        <Container className="m-0 p-0">
                           <Card
                             className="container-bg  material-onyx"
                             sx={{
@@ -6534,7 +6506,7 @@ export default function Configurations({
                       )}
 
                       {augmentedMP && (
-                        <Container>
+                        <Container className="m-0 p-0">
                           <Card
                             className="container-bg  material-onyx"
                             sx={{
@@ -6574,7 +6546,7 @@ export default function Configurations({
                       )}
 
                       {ruleP && (
-                        <Container>
+                        <Container className="m-0 p-0">
                           <Card
                             className="container-bg  material-onyx"
                             sx={{
@@ -6678,14 +6650,14 @@ export default function Configurations({
                   Train Model
                 </LoadingButton>
                 <Button
-                    variant="outlined"
-                    className="float-end app-button app-button-red ms-2"
-                    sx={{ border: "none", "&:hover": { border: "none" } }}
-                    startIcon={<Cancel />}
-                    onClick={abortTrain}
-                  >
-                    Abort
-                  </Button>
+                  variant="outlined"
+                  className="float-end app-button app-button-red ms-2"
+                  sx={{ border: "none", "&:hover": { border: "none" } }}
+                  startIcon={<Cancel />}
+                  onClick={abortTrain}
+                >
+                  Abort
+                </Button>
               </Stack>
             ) : (
               <Stack direction="row" spacing={1} className={"float-end"}>
@@ -6786,7 +6758,7 @@ export default function Configurations({
             severity="success"
             sx={{ width: "100%" }}
           >
-            Model was trained successfully!!
+            Model persisted
           </Alert>
         </Snackbar>
         <Snackbar
@@ -6799,7 +6771,7 @@ export default function Configurations({
           }}
         >
           <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
-            ERROR: Was unable to train model
+            Training failed
           </Alert>
         </Snackbar>
         <Snackbar
@@ -6816,7 +6788,7 @@ export default function Configurations({
             severity="success"
             sx={{ width: "100%" }}
           >
-            Model training was cancelled successfully!!
+            Model training aborted
           </Alert>
         </Snackbar>
         <Snackbar
@@ -6829,7 +6801,7 @@ export default function Configurations({
           }}
         >
           <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
-            ERROR: Was unable to cancel training model
+           Failed to abort training
           </Alert>
         </Snackbar>
         <Snackbar
