@@ -67,3 +67,31 @@ class EmptyEvalDatasetException(RASACIOException):
 
 class ConfigFileNotFoundException(RASACIOException):
     pass
+
+
+class DirectoryPathNotSpecifiedException(RASACIOException):
+    pass
+
+
+class CreateDirectoryException(RASACIOException):
+    pass
+
+
+class InvalidDirectoryPathException(RASACIOException):
+    pass
+
+
+class ModelPersistException(RASACIOException):
+    pass
+
+
+class InvalidAssetTypeException(RASACIOException):
+    pass
+
+
+class InvalidTensorboardMetricException(RASACIOException):
+    pass
+
+
+class TensorboardScalarsException(RASACIOException):
+    pass

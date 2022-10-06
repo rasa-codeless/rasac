@@ -19,3 +19,19 @@ class MongoDBBotStoreUpdateException(RASACException):
 
 class MongoDBBotSoreReadException(RASACException):
     pass
+
+
+class BotStoreRetrieveException(RASACException):
+    pass
+
+
+class BotStorePersistException(RASACException):
+    pass
+
+
+class BotStoreCacheException(RASACException):
+    pass
+
+
+class BotStoreCleanupException(RASACException):
+    pass
