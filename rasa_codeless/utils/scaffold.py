@@ -20,7 +20,7 @@ from rasa_codeless.shared.exceptions.io import (
 )
 from rasa_codeless.utils.io import (
     get_timestamp_str,
-    get_seetm_init_caches,
+    get_rasac_init_caches,
     get_existing_toplevel_file_list,
 )
 
@@ -49,7 +49,7 @@ class RASACInit:
             self.cache_path_timestamped_path = os.path.join(dest_path, self.cache_path_timestamped) + "\\"
 
             # removing existing caches
-            cached_init_list = get_seetm_init_caches(dest_path)
+            cached_init_list = get_rasac_init_caches(dest_path)
             for elem in cached_init_list:
                 shutil.rmtree(elem)
 

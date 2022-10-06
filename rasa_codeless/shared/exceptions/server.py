@@ -13,10 +13,6 @@ class ModelTrainException(RASACServerException):
     pass
 
 
-class InvalidDirectoryPathException(RASACServerException):
-    pass
-
-
 class EpochsMismatchException(RASACServerException):
     pass
 
@@ -29,19 +25,19 @@ class InvalidProcessIDException(RASACServerException):
     pass
 
 
-class ProcessQueueException(RASACServerException):
+class TrainingQueueException(RASACServerException):
     pass
 
 
-class ProcessQueuePushException(RASACServerException):
+class TrainingQueuePushException(RASACServerException):
     pass
 
 
-class ProcessQueueUpdateException(RASACServerException):
+class TrainingQueueUpdateException(RASACServerException):
     pass
 
 
-class ProcessQueuePullException(RASACServerException):
+class TrainingQueuePullException(RASACServerException):
     pass
 
 
