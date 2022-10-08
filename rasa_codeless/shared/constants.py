@@ -3,7 +3,7 @@ import os
 # RASA CODELESS CLI
 PACKAGE_NAME = "rasac"
 PACKAGE_NAME_PYPI = "rasac"
-PACKAGE_VERSION = "2.1.0"
+PACKAGE_VERSION = "2.1.1"
 PACKAGE_VERSION_LONG = f'RASAC Version: {PACKAGE_VERSION}'
 LANGUAGES_SUPPORTED = ['en', 'si']
 LOGGING_FORMAT_STR = '%(asctime)s\t%(levelname)s\t%(name)s - %(message)s'
