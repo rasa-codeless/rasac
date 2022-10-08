@@ -3213,7 +3213,7 @@ export default function Configurations({
                       {spacyLM && (
                         <Container className="m-0 p-0">
                           <Card
-                            className="container-bg  material-onyx material-onyx"
+                            className="container-bg  material-onyx"
                             sx={{
                               height: "fit-content",
                               borderRadius: "16px",
