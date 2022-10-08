@@ -2,6 +2,14 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](https://semver.org/) starting with version 0.0.1a1
 
+## [2.1.1] - 2022-10-08
+### Improvements
+- curve UI enhancements
+
+### Bugfixes
+- fixed botstore caching bug where `clear cache` failed due to invalid extension
+
+
 ## [2.1.0] - 2022-10-07
 ### Improvements
 - replaced `Curve Modal` with `MUI Drawer`

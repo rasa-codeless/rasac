@@ -31,6 +31,6 @@
 - Evaluations are limited to DIET Classifier for now
 
 📒 Docs: https://rasa-codeless.github.io  
-📦 PyPi: https://pypi.org/project/rasac/2.1.0/  
+📦 PyPi: https://pypi.org/project/rasac/2.1.1/  
 🪵 Full Changelog: [here](https://github.com/rasa-codeless/rasac/blob/main/CHANGELOG.md)  
 

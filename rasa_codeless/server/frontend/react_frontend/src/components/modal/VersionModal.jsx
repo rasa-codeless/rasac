@@ -13,7 +13,8 @@ export default class VersionModal extends Component {
         className="modal fade"
         id="rasac-version-modal"
         tabIndex="-1"
-        aria-hidden="true">
+        aria-hidden="true"
+      >
         <div className="modal-dialog modal-dialog-centered overflow-hidden">
           <div className="modal-content app-modal app-modal-version">
             <div className="modal-body" style={{ border: "none" }}>
@@ -57,9 +58,9 @@ export default class VersionModal extends Component {
                           >{`RASA CODELESS`}</h5>
                           <Chip
                             label={
-                              <Typography
-                                className={""}
-                              >{`version ${this.props.version}`}</Typography>
+                              <Typography className={""}>
+                                {`version ${this.props.version}`}
+                              </Typography>
                             }
                             className="material-blue material-white-f"
                           />

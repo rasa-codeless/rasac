@@ -1,5 +1,6 @@
 import logging
 import os
+import re
 import shutil
 from datetime import datetime
 from typing import Text, List, NoReturn, Dict, Union, Optional
@@ -82,7 +83,11 @@ class LocalBotStore:
                 botstore_path=self.botstore_path,
                 models_path=self.models_path
             )
-            invalid_model_caches = list(set(all_botstore_models).difference(set(valid_models)))
+            invalid_model_caches = [
+                re.sub(RASA_MODEL_EXTENSIONS[0], "", dir_)
+                for dir_
+                in list(set(all_botstore_models).difference(set(valid_models)))
+            ]
             logger.debug(f"Invalid model caches found: {invalid_model_caches}")
             for cache_dir in invalid_model_caches:
                 shutil.rmtree(os.path.join(self.botstore_path, cache_dir))
